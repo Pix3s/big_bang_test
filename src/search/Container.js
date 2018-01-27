@@ -59,10 +59,17 @@ class Container extends Component {
   }
 
   localSearchCity = inputText => {
-    if (inputText === 'fuck you') {
+    if (inputText.indexOf(' ') === 0 || inputText.length === 0) {
+      this.setState({ localCities: StoreManager.getBookmarks() })
+    } else if (inputText === 'fuck you') {
       this.setState({ localCities: [{ title: 'FUCK YOU!!!' }] })
     } else {
-      this.setState({ localCities: StoreManager.getBookmarks() })
+      this.setState({
+        localCities: StoreManager.getBookmarks().filter(city => {
+          let nameCity = city.title
+          return nameCity.includes(inputText)
+        }),
+      })
     }
   }
 
