@@ -10,12 +10,12 @@ const ListContainer = styled.ul`
 
 class List extends Component {
   render() {
-    const { isSearchAll, cities } = this.props
+    const { isSearchAll, cities, updateStore } = this.props
 
     return (
-      <ListContainer>
+      <ListContainer >
         {cities.map(city => (
-          <CityItem key={city.woeid} isSearchAll={isSearchAll} city={city} />
+          <CityItem key={city.woeid} isSearchAll={isSearchAll} city={city} updateStore={updateStore}/>
         ))}
       </ListContainer>
     )

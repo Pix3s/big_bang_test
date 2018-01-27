@@ -30,6 +30,10 @@ class Container extends Component {
     this.setState({ localCities: StoreManager.getBookmarks() })
   }
 
+  updateStore = () => {
+    this.setState({ localCities: StoreManager.getBookmarks() })
+  }
+
   requestSearchCity = search => {
     let searchString = '/api/location/search/?query=' + search
 
@@ -94,6 +98,7 @@ class Container extends Component {
         <br />
         <List
           isSearchAll={isSearchAll}
+          updateStore={this.updateStore}
           cities={isSearchAll ? this.state.cities : this.state.localCities}
         />
       </ScreenSearch>

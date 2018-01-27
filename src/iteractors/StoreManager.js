@@ -1,7 +1,7 @@
 class StoreManager extends Object {
   static addBookmarks = (id, title) => {
     let bookmarks = localStorage.getItem('bookmarks')
-    if (bookmarks === null || '' + bookmarks === '') {
+    if (bookmarks === null || '' + bookmarks === '' || bookmarks === '[]') {
       bookmarks = '[{"id":' + id + ',"title":"' + title + '"}]'
     } else {
       if (StoreManager.isBookmarks(id)) {
@@ -18,9 +18,6 @@ class StoreManager extends Object {
     localStorage.setItem('bookmarks', bookmarks)
   }
 
-  /**
-   * TODO: удаление не работет
-   */
   static dellBookmarks = id => {
     let bookmarks = '' + localStorage.getItem('bookmarks')
     console.log(id)
@@ -38,9 +35,18 @@ class StoreManager extends Object {
       }
     }
     console.log(index)
-    // json.remove(index)
-    // console.log(json)
-    localStorage.setItem('bookmarks', JSON.stringify(json))
+    delete json[index]
+    let jsonStr = JSON.stringify(json)
+    if (jsonStr.includes(',null,')) {
+      jsonStr = jsonStr.replace(',null,', ',')
+    } else if (jsonStr.includes(',null')) {
+      jsonStr = jsonStr.replace(',null', '')
+    } else if (jsonStr.includes('null,')) {
+      jsonStr = jsonStr.replace('null,', '')
+    } else {
+      jsonStr = "[]"
+    }
+    localStorage.setItem('bookmarks', jsonStr)
   }
 
   static getBookmarks = () => {

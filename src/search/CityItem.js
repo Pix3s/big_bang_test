@@ -5,8 +5,8 @@ import StoreManager from '../iteractors/StoreManager'
 
 const ContainerCity = styled.li`
   padding: 5%;
-  margin-right:25%;
-  margin-left:25%;
+  margin-right: 25%;
+  margin-left: 25%;
   border: 2px solid black;
 `
 
@@ -18,16 +18,14 @@ const Title = styled.p`
 class CityItem extends Component {
   addLocalStorage = (id, title) => {
     StoreManager.addBookmarks(id, title)
-    this.setState({ action: 'add' })
   }
 
   removeLocalStorage = id => {
     StoreManager.dellBookmarks(id)
-    this.setState({ action: 'remove' })
   }
 
   render() {
-    const { isSearchAll, city } = this.props
+    const { isSearchAll, city, updateStore } = this.props
 
     return (
       <ContainerCity>
@@ -41,16 +39,15 @@ class CityItem extends Component {
             isSearchAll
               ? this.addLocalStorage(city.woeid, city.title)
               : this.removeLocalStorage(city.id)
+            updateStore()
           }}
         >
           {isSearchAll ? 'Добавить в избранное' : 'Убрать из числа избранных'}
         </button>
         <br />
         <br />
-        <Link
-          to={'/weather/' + (isSearchAll ? city.woeid : city.id)}
-        >
-          {!isSearchAll &&  city.id === 666? "Поломать все нахуй" : "Погода"}
+        <Link to={'/weather/' + (isSearchAll ? city.woeid : city.id)}>
+          {!isSearchAll && city.id === 666 ? 'Поломать все нахуй' : 'Погода'}
         </Link>
       </ContainerCity>
     )
