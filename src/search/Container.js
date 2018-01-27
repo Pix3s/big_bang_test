@@ -5,12 +5,13 @@ import styled from 'styled-components'
 import StoreManager from '../iteractors/StoreManager'
 
 const SearchInput = styled.input`
-  padding-left: 2%;
-  margin-top: 2%;
-  padding-right: 2%;
+  margin-top: 5%;
+  width: 50%;
+  height: 15%;
 `
 
 const ScreenSearch = styled.div`
+  text-align: center;
 `
 
 class Container extends Component {
