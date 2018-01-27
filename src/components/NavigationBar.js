@@ -12,13 +12,13 @@ const NavigationContainer = styled.div`
 
 const NavigationLink = styled(Link)`
   font-weight: 100;
-  text-decoration:none;
-  color: black;
+  text-decoration: none;
+  color: blue;
   font-size: 200%;
   padding: 5%;
 `
 
-const NavigationBar = () => (
+const NavigationBar = isSearchAll => (
   <NavigationContainer>
     <NavigationLink to={'/search'}>Поиск</NavigationLink>
     <NavigationLink to={'/bookmarks'}>Избранное</NavigationLink>
