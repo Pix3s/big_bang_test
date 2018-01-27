@@ -18,7 +18,7 @@ const NavigationLink = styled(Link)`
   padding: 5%;
 `
 
-const NavigationBar = isSearchAll => (
+const NavigationBar = () => (
   <NavigationContainer>
     <NavigationLink to={'/search'}>Поиск</NavigationLink>
     <NavigationLink to={'/bookmarks'}>Избранное</NavigationLink>

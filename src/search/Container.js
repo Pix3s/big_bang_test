@@ -80,7 +80,7 @@ class Container extends Component {
 
     return (
       <ScreenSearch>
-        <NavigationBar isSearchAll={isSearchAll}/>
+        <NavigationBar/>
         <SearchInput
           onChange={e => {
             let inputText = e.target.value
