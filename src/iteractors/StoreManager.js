@@ -46,7 +46,7 @@ class StoreManager extends Object {
   static getBookmarks = () => {
     let bookmarks = localStorage.getItem('bookmarks')
     if (bookmarks === null || '' + bookmarks === '') {
-      return [{ title: 'null_0' }, { title: 'null_1' }, { title: 'null_2' }]
+      return []
     } else {
       let json = JSON.parse('' + bookmarks)
       console.log(json)
