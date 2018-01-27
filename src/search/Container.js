@@ -6,12 +6,11 @@ import StoreManager from '../iteractors/StoreManager'
 
 const SearchInput = styled.input`
   padding-left: 2%;
-  margin-left: 2%;
+  margin-top: 2%;
   padding-right: 2%;
 `
 
 const ScreenSearch = styled.div`
-  padding: 1%;
 `
 
 class Container extends Component {
@@ -79,7 +78,6 @@ class Container extends Component {
     return (
       <ScreenSearch>
         <NavigationBar />
-        <br />
         <SearchInput
           onChange={e => {
             let inputText = e.target.value

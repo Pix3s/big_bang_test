@@ -4,7 +4,6 @@ import styled from 'styled-components'
 import Weather from './Weather'
 
 const ScreenWeather = styled.div`
-  padding: 2%;
 `
 
 class Container extends Component {
