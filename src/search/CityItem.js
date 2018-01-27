@@ -5,7 +5,14 @@ import StoreManager from '../iteractors/StoreManager'
 
 const ContainerCity = styled.li`
   padding: 5%;
+  margin-right:25%;
+  margin-left:25%;
   border: 2px solid black;
+`
+
+const Title = styled.p`
+  font-weight: 400;
+  font-size: 200%;
 `
 
 class CityItem extends Component {
@@ -24,7 +31,7 @@ class CityItem extends Component {
 
     return (
       <ContainerCity>
-        <p>{city.title}</p>
+        <Title>{city.title}</Title>
         <button
           disabled={
             (isSearchAll && StoreManager.isBookmarks(city.woeid)) ||
@@ -38,6 +45,7 @@ class CityItem extends Component {
         >
           {isSearchAll ? 'Добавить в избранное' : 'Убрать из числа избранных'}
         </button>
+        <br />
         <br />
         <Link
           to={'/weather/' + (isSearchAll ? city.woeid : city.id)}

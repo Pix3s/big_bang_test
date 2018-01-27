@@ -5,6 +5,8 @@ import styled from 'styled-components'
 import StoreManager from '../iteractors/StoreManager'
 
 const SearchInput = styled.input`
+  font-weight: 200;
+  font-size: 200%;
   margin-top: 5%;
   width: 50%;
   height: 15%;
