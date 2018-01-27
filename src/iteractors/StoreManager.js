@@ -44,7 +44,7 @@ class StoreManager extends Object {
     } else if (jsonStr.includes('null,')) {
       jsonStr = jsonStr.replace('null,', '')
     } else {
-      jsonStr = "[]"
+      jsonStr = '[]'
     }
     localStorage.setItem('bookmarks', jsonStr)
   }
