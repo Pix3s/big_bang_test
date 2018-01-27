@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import TableWeather from './TableWeather'
+import StoreManager from '../iteractors/StoreManager'
 import styled from 'styled-components'
 
 const WeatherContainer = styled.div`
@@ -27,9 +28,9 @@ class Weather extends Component {
     return (
       <WeatherContainer>
         <Country>
-          {weather === null ? 'Wait pleas...' : weather.parent.title}
+          {weather === null ? 'Wait please...' : weather.parent.title}
         </Country>
-        <City>{weather === null ? 'Wait pleas...' : weather.title}</City>
+        <City>{weather === null ? 'Wait please...' : weather.title}</City>
         <TableWeather
           paramWeather={weather === null ? null : weather.consolidated_weather}
         />

@@ -3,7 +3,8 @@ import styled from 'styled-components'
 import Utils from '../iteractors/Utils'
 
 const Table = styled.div`
-  padding: 5%;
+  width: 10%;
+  padding: 3%;
   border: 2px solid black;
 `
 
@@ -12,16 +13,41 @@ const Image = styled.img`
   height: 100px;
 `
 
+const Day = styled.p`
+  text-align: center;
+  font-weight: 600;
+  font-size: 150%;
+`
+
+const ContainerTableWeather = styled.div`
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0;
+`
+
+const ContainerTable = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 0;
+  margin-top: 5%;
+  width: 100%;
+`
+
 class TableWeather extends Component {
   render() {
     const { paramWeather } = this.props
     return (
-      <div>
-        <div>
+      <ContainerTableWeather>
+        <ContainerTable>
           {paramWeather === null
             ? 'Wait please...'
             : paramWeather.map(dayWeather => (
                 <Table>
+                  <Day>{Utils.getDay(dayWeather.applicable_date)}</Day>
                   <p>{new Date(dayWeather.applicable_date).toDateString()}</p>
                   <p>{dayWeather.weather_state_name}</p>
                   <p>{'Now: ' + parseInt(dayWeather.the_temp) + '°'}</p>
@@ -41,8 +67,8 @@ class TableWeather extends Component {
                   />
                 </Table>
               ))}
-        </div>
-      </div>
+        </ContainerTable>
+      </ContainerTableWeather>
     )
   }
 }

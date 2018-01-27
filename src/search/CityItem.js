@@ -39,7 +39,6 @@ class CityItem extends Component {
           {isSearchAll ? 'Добавить в избранное' : 'Убрать из числа избранных'}
         </button>
         <br />
-        <br />
         <Link
           to={'/weather/' + (isSearchAll ? city.woeid : city.id)}
         >
