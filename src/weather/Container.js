@@ -8,12 +8,11 @@ const ScreenWeather = styled.div`
 `
 
 class Container extends Component {
-
   constructor() {
     super()
 
     this.state = {
-      weather: null
+      weather: null,
     }
   }
 
@@ -24,7 +23,7 @@ class Container extends Component {
   }
 
   requestSearchCity = id => {
-    let searchString = '/api/location/' + id + "/"
+    let searchString = '/api/location/' + id + '/'
 
     fetch(searchString, {
       method: 'GET',
@@ -49,12 +48,11 @@ class Container extends Component {
   }
 
   render() {
-
     return (
       <ScreenWeather>
         <NavigationBar />
         <br />
-        <Weather weather={this.state.weather}/>
+        <Weather weather={this.state.weather} />
       </ScreenWeather>
     )
   }

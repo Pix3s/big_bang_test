@@ -18,14 +18,17 @@ class StoreManager extends Object {
     localStorage.setItem('bookmarks', bookmarks)
   }
 
+  /**
+   * TODO: удаление не работет
+   */
   static dellBookmarks = id => {
     let bookmarks = '' + localStorage.getItem('bookmarks')
     console.log(id)
-    if (bookmarks === null || '' + bookmarks === '') {
+    if (bookmarks === null || bookmarks === '') {
       return
     }
 
-    let json = JSON.parse('' + bookmarks)
+    let json = JSON.parse(bookmarks)
     console.log(json)
     let index = 0
     for (let i = 0; i < json.length; i++) {

@@ -8,29 +8,31 @@ const WeatherContainer = styled.div`
 
 const Country = styled.div`
   font-weight: 600;
-  font-size: 200%
+  font-size: 200%;
 `
 
 const City = styled.div`
   font-weight: 300;
-  font-size: 100%
+  font-size: 100%;
 `
 
 class Weather extends Component {
-
   constructor() {
     super()
   }
 
   render() {
-
-    const {weather} = this.props
+    const { weather } = this.props
 
     return (
       <WeatherContainer>
-        <Country>{weather === null? "Wait pleas..." : weather.parent.title}</Country>
-        <City>{weather === null? "Wait pleas..." : weather.title}</City>
-        <TableWeather paramWeather={weather === null? null : weather.consolidated_weather} />
+        <Country>
+          {weather === null ? 'Wait pleas...' : weather.parent.title}
+        </Country>
+        <City>{weather === null ? 'Wait pleas...' : weather.title}</City>
+        <TableWeather
+          paramWeather={weather === null ? null : weather.consolidated_weather}
+        />
       </WeatherContainer>
     )
   }

@@ -11,14 +11,9 @@ class App extends Component {
   render() {
     return (
       <div>
-        <Route
-          path="/search"
-          component={() => (
-            <Search isSearchAll={true}/>
-          )}
-        />
-        <Route path="/bookmarks" component={() => <Search isSearchAll={false}/>} />
-        <Route path="/weather/" component={() => <Weather isSearchAll={false}/>} />
+        <Route path="/search" component={() => <Search isSearchAll={true} />} />
+        <Route path="/bookmarks" component={() => <Search isSearchAll={false} />} />
+        <Route path="/weather/" component={() => <Weather />} />
       </div>
     )
   }

@@ -31,7 +31,7 @@ class Container extends Component {
   requestSearchCity = search => {
     let searchString = '/api/location/search/?query=' + search
 
-    if (search.indexOf(" ") === 0 || search.length === 0) {
+    if (search.indexOf(' ') === 0 || search.length === 0) {
       this.setState({ cities: [] })
       return
     }

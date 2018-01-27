@@ -9,15 +9,14 @@ const ContainerCity = styled.li`
 `
 
 class CityItem extends Component {
-
   addLocalStorage = (id, title) => {
     StoreManager.addBookmarks(id, title)
-    this.setState({action:"add"})
+    this.setState({ action: 'add' })
   }
 
   removeLocalStorage = id => {
     StoreManager.dellBookmarks(id)
-    this.setState({action:"remove"})
+    this.setState({ action: 'remove' })
   }
 
   render() {
@@ -34,13 +33,13 @@ class CityItem extends Component {
               : this.removeLocalStorage(city.id)
           }}
         >
-          {isSearchAll
-              ? "Добавить в избранное"
-              : "Убрать из числа избранных"}
+          {isSearchAll ? 'Добавить в избранное' : 'Убрать из числа избранных'}
         </button>
         <br />
         <br />
-        <Link to={'/weather/' + (isSearchAll? city.woeid : city.id)}>Посмотреть погоду</Link>
+        <Link to={'/weather/' + (isSearchAll ? city.woeid : city.id)}>
+          Посмотреть погоду
+        </Link>
       </ContainerCity>
     )
   }

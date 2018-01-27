@@ -14,11 +14,9 @@ class List extends Component {
 
     return (
       <ListContainer>
-        {
-          cities.map(city => (
-            <CityItem key={city.woeid} isSearchAll={isSearchAll} city={city} />
-          ))
-        }
+        {cities.map(city => (
+          <CityItem key={city.woeid} isSearchAll={isSearchAll} city={city} />
+        ))}
       </ListContainer>
     )
   }

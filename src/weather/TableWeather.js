@@ -24,8 +24,14 @@ class TableWeather extends Component {
                 <Table>
                   <p>{new Date(dayWeather.applicable_date).toDateString()}</p>
                   <p>{dayWeather.weather_state_name}</p>
-                  <p>{"Now: " + parseInt(dayWeather.the_temp) + "°"}</p>
-                  <p>{"Max: " + parseInt(dayWeather.max_temp) + "° Min: " + parseInt(dayWeather.min_temp) + "°"}</p>
+                  <p>{'Now: ' + parseInt(dayWeather.the_temp) + '°'}</p>
+                  <p>
+                    {'Max: ' +
+                      parseInt(dayWeather.max_temp) +
+                      '° Min: ' +
+                      parseInt(dayWeather.min_temp) +
+                      '°'}
+                  </p>
                   <Image
                     src={
                       'https://www.metaweather.com/static/img/weather/png/' +
