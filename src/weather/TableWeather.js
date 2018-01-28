@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
-import Utils from '../iteractors/Utils'
+import {img, getDay} from '../iteractors/Utils'
 
 const Table = styled.div`
   width: 10%;
@@ -47,7 +47,7 @@ class TableWeather extends Component {
             ? 'Wait please...'
             : paramWeather.map(dayWeather => (
                 <Table>
-                  <Day>{Utils.getDay(dayWeather.applicable_date)}</Day>
+                  <Day>{getDay(dayWeather.applicable_date)}</Day>
                   <p>{new Date(dayWeather.applicable_date).toDateString()}</p>
                   <p>{dayWeather.weather_state_name}</p>
                   <p>{'Now: ' + parseInt(dayWeather.the_temp) + '°'}</p>
@@ -61,7 +61,7 @@ class TableWeather extends Component {
                   <Image
                     src={
                       'https://www.metaweather.com/static/img/weather/png/' +
-                      Utils.getImage(dayWeather.weather_state_name) +
+                      img[dayWeather.weather_state_name] +
                       '.png'
                     }
                   />

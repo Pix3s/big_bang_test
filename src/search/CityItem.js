@@ -31,10 +31,7 @@ class CityItem extends Component {
       <ContainerCity>
         <Title>{city.title}</Title>
         <button
-          disabled={
-            (isSearchAll && StoreManager.isBookmarks(city.woeid)) ||
-            city.id === 666
-          }
+          disabled={isSearchAll && StoreManager.isBookmarks(city.woeid)}
           onClick={() => {
             isSearchAll
               ? this.addLocalStorage(city.woeid, city.title)
@@ -47,7 +44,7 @@ class CityItem extends Component {
         <br />
         <br />
         <Link to={'/weather/' + (isSearchAll ? city.woeid : city.id)}>
-          {!isSearchAll && city.id === 666 ? 'Поломать все нахуй' : 'Погода'}
+          {'Погода'}
         </Link>
       </ContainerCity>
     )
