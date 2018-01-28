@@ -3,8 +3,9 @@ import styled from 'styled-components'
 import { img, getDay } from '../iteractors/Utils'
 
 const Table = styled.div`
-  width: 10%;
-  padding: 3%;
+  width: 12%;
+  padding: 2%;
+  text-align:center;
   border: 2px solid black;
 `
 
