@@ -22,7 +22,7 @@ class Container extends Component {
   }
 
   requestSearchCity = id => {
-    let searchString = '/api/location/' + id + '/'
+    const searchString = '/api/location/' + id + '/'
 
     fetch(searchString, {
       method: 'GET',
@@ -50,7 +50,6 @@ class Container extends Component {
     return (
       <ScreenWeather>
         <NavigationBar />
-        <br />
         <Weather weather={this.state.weather} />
       </ScreenWeather>
     )

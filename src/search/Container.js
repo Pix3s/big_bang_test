@@ -2,7 +2,8 @@ import React, { Component } from 'react'
 import List from './List'
 import { NavigationBar } from '../components'
 import styled from 'styled-components'
-import StoreManager from '../iteractors/StoreManager'
+import {} from '../iteractors/StoreManager'
+import { getBookmarks } from '../iteractors/StoreManager'
 
 const SearchInput = styled.input`
   font-weight: 200;
@@ -27,15 +28,15 @@ class Container extends Component {
   }
 
   componentWillMount() {
-    this.setState({ localCities: StoreManager.getBookmarks() })
+    this.updateStore()
   }
 
   updateStore = () => {
-    this.setState({ localCities: StoreManager.getBookmarks() })
+    this.setState({ localCities: getBookmarks() })
   }
 
   requestSearchCity = search => {
-    let searchString = '/api/location/search/?query=' + search
+    const searchString = '/api/location/search/?query=' + search
 
     if (search.indexOf(' ') === 0 || search.length === 0) {
       this.setState({ cities: [] })
@@ -58,18 +59,16 @@ class Container extends Component {
         this.setState({ cities: cities })
       })
       .catch(err => {
-        console.log(
-          'Can’t access ' + searchString + '. No response. Error = ' + err
-        )
+        console.log('Error = ' + err)
       })
   }
 
   localSearchCity = inputText => {
     if (inputText.indexOf(' ') === 0 || inputText.length === 0) {
-      this.setState({ localCities: StoreManager.getBookmarks() })
+      this.setState({ localCities: getBookmarks() })
     } else {
       this.setState({
-        localCities: StoreManager.getBookmarks().filter(city =>
+        localCities: getBookmarks().filter(city =>
           city.title.includes(inputText)
         ),
       })
@@ -81,10 +80,10 @@ class Container extends Component {
 
     return (
       <ScreenSearch>
-        <NavigationBar/>
+        <NavigationBar />
         <SearchInput
           onChange={e => {
-            let inputText = e.target.value
+            const inputText = e.target.value
             if (isSearchAll) {
               this.requestSearchCity(inputText)
             } else {

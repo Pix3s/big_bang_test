@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
-import StoreManager from '../iteractors/StoreManager'
+import { addBookmarks, isBookmarks } from '../iteractors/StoreManager'
+import { dellBookmarks } from '../iteractors/StoreManager'
 
 const ContainerCity = styled.li`
-  padding: 5%;
+  padding: 1%;
   margin-right: 25%;
   margin-left: 25%;
   border: 2px solid black;
@@ -16,13 +17,6 @@ const Title = styled.p`
 `
 
 class CityItem extends Component {
-  addLocalStorage = (id, title) => {
-    StoreManager.addBookmarks(id, title)
-  }
-
-  removeLocalStorage = id => {
-    StoreManager.dellBookmarks(id)
-  }
 
   render() {
     const { isSearchAll, city, updateStore } = this.props
@@ -31,11 +25,11 @@ class CityItem extends Component {
       <ContainerCity>
         <Title>{city.title}</Title>
         <button
-          disabled={isSearchAll && StoreManager.isBookmarks(city.woeid)}
+          disabled={isSearchAll && isBookmarks(city.woeid)}
           onClick={() => {
             isSearchAll
-              ? this.addLocalStorage(city.woeid, city.title)
-              : this.removeLocalStorage(city.id)
+              ? addBookmarks(city.woeid, city.title)
+              : dellBookmarks(city.id)
             updateStore()
           }}
         >

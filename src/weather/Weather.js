@@ -18,10 +18,6 @@ const City = styled.div`
 `
 
 class Weather extends Component {
-  constructor() {
-    super()
-  }
-
   render() {
     const { weather } = this.props
 

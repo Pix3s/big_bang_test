@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
-import {img, getDay} from '../iteractors/Utils'
+import { img, getDay } from '../iteractors/Utils'
 
 const Table = styled.div`
   width: 10%;
@@ -33,7 +33,7 @@ const ContainerTable = styled.div`
   flex-wrap: wrap;
   justify-content: center;
   padding: 0;
-  margin-top: 5%;
+  margin-top: 1%;
   width: 100%;
 `
 
@@ -51,12 +51,17 @@ class TableWeather extends Component {
                   <p>{new Date(dayWeather.applicable_date).toDateString()}</p>
                   <p>{dayWeather.weather_state_name}</p>
                   <p>{'Now: ' + parseInt(dayWeather.the_temp) + '°'}</p>
+                  {'Max: ' +
+                    parseInt(dayWeather.max_temp) +
+                    '° Min: ' +
+                    parseInt(dayWeather.min_temp) +
+                    '°'}
+                  <p>{'Wind: ' + dayWeather.wind_direction_compass}</p>
                   <p>
-                    {'Max: ' +
-                      parseInt(dayWeather.max_temp) +
-                      '° Min: ' +
-                      parseInt(dayWeather.min_temp) +
-                      '°'}
+                    {'Wind speed: ' + parseInt(dayWeather.wind_speed) + 'mph'}
+                  </p>
+                  <p>
+                    {'Accuracy forecast: ' + dayWeather.predictability + '%'}
                   </p>
                   <Image
                     src={
