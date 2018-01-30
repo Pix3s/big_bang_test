@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import TableWeather from './TableWeather'
-import StoreManager from '../iteractors/StoreManager'
+import StoreManager from '../managers/StoreManager'
 import styled from 'styled-components'
 
 const WeatherContainer = styled.div`

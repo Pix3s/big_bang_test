@@ -2,8 +2,8 @@ import React, { Component } from 'react'
 import List from './List'
 import { NavigationBar } from '../components'
 import styled from 'styled-components'
-import {} from '../iteractors/StoreManager'
-import { getBookmarks } from '../iteractors/StoreManager'
+import {} from '../managers/StoreManager'
+import { getBookmarks } from '../managers/StoreManager'
 
 const SearchInput = styled.input`
   font-weight: 200;

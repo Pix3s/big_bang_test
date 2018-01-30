@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
-import { addBookmarks, isBookmarks } from '../iteractors/StoreManager'
-import { dellBookmarks } from '../iteractors/StoreManager'
+import { addBookmarks, isBookmarks } from '../managers/StoreManager'
+import { dellBookmarks } from '../managers/StoreManager'
 
 const ContainerCity = styled.li`
   padding: 1%;
@@ -17,7 +17,6 @@ const Title = styled.p`
 `
 
 class CityItem extends Component {
-
   render() {
     const { isSearchAll, city, updateStore } = this.props
 
@@ -33,7 +32,7 @@ class CityItem extends Component {
             updateStore()
           }}
         >
-          {isSearchAll ? 'Добавить в избранное' : 'Убрать из числа избранных'}
+          {isSearchAll ? 'Сделать избранным' : 'Убрать из числа избранных'}
         </button>
         <br />
         <br />

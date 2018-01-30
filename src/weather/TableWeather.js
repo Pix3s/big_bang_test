@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
-import { img, getDay } from '../iteractors/Utils'
+import { img, getDay } from '../managers/Utils'
 
 const Table = styled.div`
   width: 12%;
