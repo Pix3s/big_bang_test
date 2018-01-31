@@ -13,16 +13,10 @@ export const addBookmarks = (id, title) => {
 }
 
 export const dellBookmarks = id => {
-  console.log(id)
   const bookmarksStr = localStorage.getItem('bookmarks')
   if (bookmarksStr === null) return
-  const json = JSON.parse(bookmarksStr)
-  let index = 0
-  json.forEach((obj, i) => {
-    index = obj.id === id? i : -1
-  })
-  if (index > 0) return
-  const bookmarks = JSON.stringify([...json.slice(0, index), ...json.slice(index + 1)])
+  const json = JSON.parse(bookmarksStr).filter(city => city.id !== id)
+  const bookmarks = JSON.stringify(json)
   localStorage.setItem('bookmarks', bookmarks)
 }
 
