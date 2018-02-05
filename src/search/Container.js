@@ -40,27 +40,26 @@ class Container extends Component {
 
     if (search.indexOf(' ') === 0 || search.length === 0) {
       this.setState({ cities: [] })
-      return
+    } else {
+      fetch(searchString, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      })
+        .then(res => {
+          if (res.status === 200) {
+            console.log('200')
+            return res.json()
+          }
+        })
+        .then(cities => {
+          this.setState({ cities: cities })
+        })
+        .catch(err => {
+          console.log('Error = ' + err)
+        })
     }
-
-    fetch(searchString, {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    })
-      .then(res => {
-        if (res.status === 200) {
-          console.log('200')
-          return res.json()
-        }
-      })
-      .then(cities => {
-        this.setState({ cities: cities })
-      })
-      .catch(err => {
-        console.log('Error = ' + err)
-      })
   }
 
   localSearchCity = inputText => {
@@ -83,12 +82,9 @@ class Container extends Component {
         <NavigationBar />
         <SearchInput
           onChange={e => {
-            const inputText = e.target.value
-            if (isSearchAll) {
-              this.requestSearchCity(inputText)
-            } else {
-              this.localSearchCity(inputText)
-            }
+            isSearchAll
+              ? this.requestSearchCity(e.target.value)
+              : this.localSearchCity(e.target.value)
           }}
         />
         <br />

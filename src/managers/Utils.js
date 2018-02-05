@@ -21,4 +21,14 @@ export const day = [
   'Saturday',
 ]
 
+export const dayRus = [
+  'Воскресенье',
+  'Понедельник',
+  'Вторник',
+  'Среда',
+  'Четверг',
+  'Пятница',
+  'Суббота',
+]
+
 export const getDay = date => day[new Date(date).getDay()]

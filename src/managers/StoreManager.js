@@ -1,36 +1,35 @@
 export const addBookmarks = (id, title) => {
   if (isBookmarks(id)) return
   const bookmarksStr = localStorage.getItem('bookmarks')
-  let json
+  let bookmarks
   if (bookmarksStr === null || bookmarksStr === '[]') {
-    json = [{ id: id, title: title }]
+    bookmarks = [{ id: id, title: title }]
   } else {
-    json = JSON.parse(bookmarksStr)
-    json = [...json, { id: id, title: title }]
+    bookmarks = JSON.parse(bookmarksStr)
+    bookmarks = [...bookmarks, { id: id, title: title }]
   }
-  const bookmarks = JSON.stringify(json)
-  localStorage.setItem('bookmarks', bookmarks)
+  localStorage.setItem('bookmarks', JSON.stringify(bookmarks))
 }
 
 export const dellBookmarks = id => {
   const bookmarksStr = localStorage.getItem('bookmarks')
   if (bookmarksStr === null) return
-  const json = JSON.parse(bookmarksStr).filter(city => city.id !== id)
-  const bookmarks = JSON.stringify(json)
-  localStorage.setItem('bookmarks', bookmarks)
+  const newBookmarks = JSON.parse(bookmarksStr).filter(city => city.id !== id)
+  localStorage.setItem('bookmarks', JSON.stringify(newBookmarks))
 }
 
 export const getBookmarks = () => {
-  const bookmarks = localStorage.getItem('bookmarks')
-  if (bookmarks === null) {
+  const bookmarksStr = localStorage.getItem('bookmarks')
+  if (bookmarksStr === null) {
     return []
   } else {
-    return JSON.parse(bookmarks)
+    return JSON.parse(bookmarksStr)
   }
 }
 
 export const isBookmarks = id => {
-  const bookmarks = localStorage.getItem('bookmarks')
-  if (bookmarks === null) return false
-  return bookmarks.includes('"id":' + id + ',')
+  const bookmarksStr = localStorage.getItem('bookmarks')
+  if (bookmarksStr === null) return false
+  const bookmarks = JSON.parse(bookmarksStr)
+  return bookmarks.some(city => city.id === id)
 }

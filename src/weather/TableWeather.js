@@ -5,7 +5,7 @@ import { img, getDay } from '../managers/Utils'
 const Table = styled.div`
   width: 12%;
   padding: 2%;
-  text-align:center;
+  text-align: center;
   border: 2px solid black;
 `
 

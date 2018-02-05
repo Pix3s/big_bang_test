@@ -13,7 +13,7 @@ class App extends Component {
       <div>
         <Route path="/search" component={() => <Search isSearchAll={true} />} />
         <Route path="/bookmarks" component={() => <Search isSearchAll={false} />} />
-        <Route path="/weather/" component={() => <Weather />} />
+        <Route path="/weather" component={() => <Weather />} />
       </div>
     )
   }

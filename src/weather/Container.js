@@ -16,12 +16,12 @@ class Container extends Component {
   }
 
   componentWillMount() {
-    let url = window.location.href
-    let id = url.substr(url.lastIndexOf('/') + 1)
-    this.requestSearchCity(id)
+    const url = window.location.href
+    const id = url.substr(url.lastIndexOf('/') + 1)
+    this.requestWeatherCity(id)
   }
 
-  requestSearchCity = id => {
+  requestWeatherCity = id => {
     const searchString = '/api/location/' + id + '/'
 
     fetch(searchString, {
@@ -32,7 +32,6 @@ class Container extends Component {
     })
       .then(res => {
         if (res.status === 200) {
-          console.log('200')
           return res.json()
         }
       })
