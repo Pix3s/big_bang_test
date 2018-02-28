@@ -1,8 +1,7 @@
-import React, { Component } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
-import { addBookmarks, isBookmarks } from '../managers/StoreManager'
-import { dellBookmarks } from '../managers/StoreManager'
+import { addBookmarks, isBookmarks, dellBookmarks, getBookmarks } from '../managers'
 
 const ContainerCity = styled.li`
   padding: 1%;
@@ -16,32 +15,27 @@ const Title = styled.p`
   font-size: 200%;
 `
 
-class CityItem extends Component {
-  render() {
-    const { isSearchAll, city, updateStore } = this.props
-
-    return (
-      <ContainerCity>
-        <Title>{city.title}</Title>
-        <button
-          disabled={isSearchAll && isBookmarks(city.woeid)}
-          onClick={() => {
-            isSearchAll
-              ? addBookmarks(city.woeid, city.title)
-              : dellBookmarks(city.id)
-            updateStore()
-          }}
-        >
-          {isSearchAll ? 'Сделать избранным' : 'Убрать из числа избранных'}
-        </button>
-        <br />
-        <br />
-        <Link to={'/weather/' + (isSearchAll ? city.woeid : city.id)}>
-          {'Погода'}
-        </Link>
-      </ContainerCity>
-    )
-  }
-}
+const CityItem = ({ isSearchAll, city, updateList }) =>
+  <ContainerCity>
+    <Title>{city.title}</Title>
+    <button
+      disabled={isSearchAll && isBookmarks(city.woeid)}
+      onClick={() => {
+        if (isSearchAll) { 
+          addBookmarks(city.woeid, city.title)
+        } else {
+          dellBookmarks(city.woeid)
+          updateList(getBookmarks())
+        }
+      }}
+    >
+      {isSearchAll ? 'Сделать избранным' : 'Убрать из числа избранных'}
+    </button>
+    <br/>
+    <br/>
+    <Link to={'/weather/' + city.woeid}>
+      Погода
+    </Link>
+  </ContainerCity>
 
 export default CityItem

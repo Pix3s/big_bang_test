@@ -1,25 +1,19 @@
-import React, { Component } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import CityItem from './CityItem'
 
 const ListContainer = styled.ul`
+  list-style-type: none;
   margin: 0;
   padding: 0;
-  list-style-type: none;
 `
 
-class List extends Component {
-  render() {
-    const { isSearchAll, cities, updateStore } = this.props
-
-    return (
-      <ListContainer >
-        {cities.map(city => (
-          <CityItem key={city.woeid} isSearchAll={isSearchAll} city={city} updateStore={updateStore}/>
-        ))}
-      </ListContainer>
-    )
-  }
-}
+const List = ({ isSearchAll, cities, updateList }) => (
+  <ListContainer >
+    {cities.map(city => (
+      <CityItem key={city.woeid} isSearchAll={isSearchAll} city={city} updateList={updateList} />
+    ))}
+  </ListContainer>
+)
 
 export default List

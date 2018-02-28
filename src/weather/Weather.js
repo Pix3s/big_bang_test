@@ -1,6 +1,5 @@
-import React, { Component } from 'react'
-import TableWeather from './TableWeather'
-import StoreManager from '../managers/StoreManager'
+import React from 'react'
+import WeatherItem from './WeatherItem'
 import styled from 'styled-components'
 
 const WeatherContainer = styled.div`
@@ -17,22 +16,17 @@ const City = styled.div`
   font-size: 100%;
 `
 
-class Weather extends Component {
-  render() {
-    const { weather } = this.props
+const Weather = ({ weather }) => (
 
-    return (
-      <WeatherContainer>
-        <Country>
-          {weather === null ? 'Wait please...' : weather.parent.title}
-        </Country>
-        <City>{weather === null ? 'Wait please...' : weather.title}</City>
-        <TableWeather
-          paramWeather={weather === null ? null : weather.consolidated_weather}
-        />
-      </WeatherContainer>
-    )
-  }
-}
+  <WeatherContainer>
+    <Country>
+      {weather === null ? 'Wait please...' : weather.parent.title}
+    </Country>
+    <City>{weather === null ? 'Wait please...' : weather.title}</City>
+    <WeatherItem
+      paramWeather={weather === null ? null : weather.consolidated_weather}
+    />
+  </WeatherContainer>
+)
 
 export default Weather

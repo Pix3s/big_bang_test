@@ -1,22 +1,20 @@
-import React, { Component } from 'react'
+import React from 'react'
+import { Provider } from 'react-redux'
 import { Route } from 'react-router-dom'
+
 import { Search } from './search'
 import { Weather } from './weather'
+import { configureStore } from './configureStore'
 
-class App extends Component {
-  constructor() {
-    super()
-  }
+let store = configureStore()
 
-  render() {
-    return (
-      <div>
-        <Route path="/search" component={() => <Search isSearchAll={true} />} />
-        <Route path="/bookmarks" component={() => <Search isSearchAll={false} />} />
-        <Route path="/weather" component={() => <Weather />} />
-      </div>
-    )
-  }
-}
+const App = () =>
+  <Provider store={store}>
+    <div>
+      <Route path="/search" component={() => <Search isSearchAll={true} />} />
+      <Route path="/bookmarks" component={() => <Search isSearchAll={false} />} />
+      <Route path="/weather" component={() => <Weather />} />
+    </div>
+  </Provider>
 
 export default App
