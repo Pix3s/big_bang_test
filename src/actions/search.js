@@ -1,19 +1,17 @@
-// import { createAction } from 'redux-actions'
+import { createAction } from 'redux-actions'
 
-export const UPDATE_LIST = 'UPDATE_LIST';
+export const SET_CITIES = 'SET_CITIES'
+export const REQUEST_CITIES = 'REQUEST_CITIES'
 
-// export const updateList = createAction(UPDATE_LIST)
-
-export const updateList = cities => {
-    return { type: UPDATE_LIST, cities }
-};
+export const setCities = createAction(SET_CITIES)
+export const requestCities = createAction(REQUEST_CITIES)
 
 export const fetchSearchCity = searchText => {
-    const searchString = '/api/location/search/?query=' + searchText
-    return dispatch => {
-        return fetch(searchString)
-            .then(response => response.json())
-            .then(cities => { dispatch(updateList(cities)) })
-            .catch(error => console.log('Error: ' + error.message))
-    }
+  return dispatch => {
+    dispatch(requestCities())
+    return fetch('/api/location/search/?query=' + searchText)
+      .then(response => response.json())
+      .then(cities => dispatch(setCities(cities)))
+      .catch(error => console.log('Error: ' + error.message))
+  }
 }

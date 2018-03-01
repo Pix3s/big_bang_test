@@ -8,10 +8,15 @@ const ListContainer = styled.ul`
   padding: 0;
 `
 
-const List = ({ isSearchAll, cities, updateList }) => (
-  <ListContainer >
+const List = ({ isBookmarks, cities, setCities }) => (
+  <ListContainer>
     {cities.map(city => (
-      <CityItem key={city.woeid} isSearchAll={isSearchAll} city={city} updateList={updateList} />
+      <CityItem
+        key={city.woeid}
+        isBookmarks={isBookmarks}
+        city={city}
+        setCities={setCities}
+      />
     ))}
   </ListContainer>
 )

@@ -1,20 +1,22 @@
 import React from 'react'
 import { Provider } from 'react-redux'
 import { Route } from 'react-router-dom'
-
-import { Search } from './search'
-import { Weather } from './weather'
+import { Search, Weather } from './containers'
 import { configureStore } from './configureStore'
 
 let store = configureStore()
 
-const App = () =>
+const App = () => (
   <Provider store={store}>
     <div>
-      <Route path="/search" component={() => <Search isSearchAll={true} />} />
-      <Route path="/bookmarks" component={() => <Search isSearchAll={false} />} />
+      <Route path="/search" component={() => <Search isBookmarks={false} />} />
+      <Route
+        path="/bookmarks"
+        component={() => <Search isBookmarks={true} />}
+      />
       <Route path="/weather" component={() => <Weather />} />
     </div>
   </Provider>
+)
 
 export default App

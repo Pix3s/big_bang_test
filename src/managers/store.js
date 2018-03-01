@@ -1,5 +1,4 @@
 export const addBookmarks = (id, title) => {
-  if (isBookmarks(id)) return
   const bookmarksStr = localStorage.getItem('bookmarks')
   let bookmarks
   if (bookmarksStr === null || bookmarksStr === '[]') {
@@ -14,7 +13,9 @@ export const addBookmarks = (id, title) => {
 export const dellBookmarks = id => {
   const bookmarksStr = localStorage.getItem('bookmarks')
   if (bookmarksStr === null) return
-  const newBookmarks = JSON.parse(bookmarksStr).filter(city => city.woeid !== id)
+  const newBookmarks = JSON.parse(bookmarksStr).filter(
+    city => city.woeid !== id,
+  )
   localStorage.setItem('bookmarks', JSON.stringify(newBookmarks))
 }
 
@@ -27,7 +28,7 @@ export const getBookmarks = () => {
   }
 }
 
-export const isBookmarks = id => {
+export const isInBookmarks = id => {
   const bookmarksStr = localStorage.getItem('bookmarks')
   if (bookmarksStr === null) return false
   const bookmarks = JSON.parse(bookmarksStr)
@@ -38,6 +39,8 @@ export const localSearchCity = inputText => {
   if (inputText.indexOf(' ') === 0 || inputText.length === 0) {
     return getBookmarks()
   } else {
-    return getBookmarks().filter(city => city.title.toLowerCase().includes(inputText.toLowerCase()))
+    return getBookmarks().filter(city =>
+      city.title.toLowerCase().includes(inputText.toLowerCase()),
+    )
   }
 }

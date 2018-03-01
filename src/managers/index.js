@@ -1,2 +1,2 @@
-export * from './localStore'
+export * from './store'
 export * from './utils'
