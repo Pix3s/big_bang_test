@@ -45,11 +45,3 @@ class SearchScreen extends Component {
 }
 
 export default SearchScreen
-
-// if (!isBookmarks && isEmpty) {
-//   setCities([])
-// } else {
-//   isBookmarks
-//     ? setCities(localSearchCity(inputText))
-//     : fetchSearchCity(inputText)
-// }

@@ -9,7 +9,7 @@ export const requestWeather = createAction(REQUEST_WEATHER)
 export const fetchWeatherCity = id => {
   return dispatch => {
     dispatch(requestWeather())
-    return fetch('/api/location/' + id + '/')
+    return fetch(`/api/location/${id}/`)
       .then(response => response.json())
       .then(weather => dispatch(setWeather(weather)))
       .catch(error => console.log('Error: ' + error.message))
