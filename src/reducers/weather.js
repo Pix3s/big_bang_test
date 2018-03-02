@@ -1,3 +1,4 @@
+import * as R from 'ramda'
 import { combineReducers } from 'redux'
 import { handleAction, handleActions } from 'redux-actions'
 import { SET_WEATHER, REQUEST_WEATHER } from '../actions'

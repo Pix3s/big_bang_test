@@ -17,21 +17,18 @@ const City = styled.div`
 `
 
 const Weather = ({ forecast, isFetching }) => (
-  console.log(isFetching, forecast),
-  (
-    <WeatherContainer>
-      <Country>{isFetching ? 'Wait please...' : forecast.parent.title}</Country>
-      <City>{isFetching ? 'Wait please...' : forecast.title}</City>
-      {isFetching ? (
-        <p>Wait please...</p>
-      ) : (
-        <WeatherItem
-          paramWeather={forecast.consolidated_weather}
-          isFetching={isFetching}
-        />
-      )}
-    </WeatherContainer>
-  )
+  <WeatherContainer>
+    <Country>{isFetching ? 'Wait please...' : forecast.parent.title}</Country>
+    <City>{isFetching ? 'Wait please...' : forecast.title}</City>
+    {isFetching ? (
+      <p>Wait please...</p>
+    ) : (
+      <WeatherItem
+        paramWeather={forecast.consolidated_weather}
+        isFetching={isFetching}
+      />
+    )}
+  </WeatherContainer>
 )
 
 export default Weather

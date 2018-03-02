@@ -6,10 +6,8 @@ const Screen = styled.div``
 
 class WeatherScreen extends Component {
   componentWillMount() {
-    const { fetchWeatherCity } = this.props
-    const url = window.location.href
-    const id = url.substr(url.lastIndexOf('/') + 1)
-    fetchWeatherCity(id)
+    const { fetchWeatherCity, match } = this.props
+    fetchWeatherCity(match.params.id)
   }
 
   render() {

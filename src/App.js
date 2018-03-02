@@ -14,7 +14,7 @@ const App = () => (
         path="/bookmarks"
         component={() => <Search isBookmarks={true} />}
       />
-      <Route path="/weather" component={() => <Weather />} />
+      <Route path="/weather/:id" component={Weather} />
     </div>
   </Provider>
 )

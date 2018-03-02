@@ -21,27 +21,23 @@ class SearchScreen extends Component {
     setCities(isBookmarks ? getBookmarks() : [])
   }
 
+  serachOnChange = inputText => {
+    const { isBookmarks, setCities, fetchSearchCity } = this.props
+    const isEmpty = inputText.indexOf(' ') === 0 || inputText.length === 0
+    isEmpty
+      ? setCities(isBookmarks ? getBookmarks() : [])
+      : isBookmarks
+        ? setCities(localSearchCity(inputText))
+        : fetchSearchCity(inputText)
+  }
+
   render() {
     const { isBookmarks, cities, setCities, fetchSearchCity } = this.props
 
     return (
       <Screen>
         <NavigationBar />
-        <SearchInput
-          onChange={e => {
-            const inputText = e.target.value
-            if (
-              !isBookmarks &&
-              (inputText.indexOf(' ') === 0 || inputText.length === 0)
-            ) {
-              setCities([])
-            } else {
-              isBookmarks
-                ? setCities(localSearchCity(inputText))
-                : fetchSearchCity(inputText)
-            }
-          }}
-        />
+        <SearchInput onChange={e => this.serachOnChange(e.target.value)} />
         <List setCities={setCities} isBookmarks={isBookmarks} cities={cities} />
       </Screen>
     )
@@ -49,3 +45,11 @@ class SearchScreen extends Component {
 }
 
 export default SearchScreen
+
+// if (!isBookmarks && isEmpty) {
+//   setCities([])
+// } else {
+//   isBookmarks
+//     ? setCities(localSearchCity(inputText))
+//     : fetchSearchCity(inputText)
+// }

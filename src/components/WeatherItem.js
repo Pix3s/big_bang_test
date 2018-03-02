@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { img, getDay } from '../managers'
 
-const Table = styled.div`
+const WeatherDay = styled.div`
   width: 12%;
   padding: 2%;
   text-align: center;
@@ -44,7 +44,7 @@ const WeatherItem = ({ paramWeather, isFetching }) => (
       {isFetching
         ? 'Wait please...'
         : paramWeather.map(dayWeather => (
-            <Table key={dayWeather.applicable_date}>
+            <WeatherDay key={dayWeather.applicable_date}>
               <Day>{getDay(dayWeather.applicable_date)}</Day>
               <p>{new Date(dayWeather.applicable_date).toDateString()}</p>
               <p>{dayWeather.weather_state_name}</p>
@@ -66,7 +66,7 @@ const WeatherItem = ({ paramWeather, isFetching }) => (
                   '.png'
                 }
               />
-            </Table>
+            </WeatherDay>
           ))}
     </ContainerTable>
   </ContainerTableWeather>
