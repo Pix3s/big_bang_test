@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import { setWeather, fetchWeatherCity } from '../actions'
+import { setWeather, requestWeather } from '../actions'
 import { WeatherScreen } from '../screens'
 
 const mapStateToProps = state => ({
@@ -9,7 +9,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = {
   setWeather,
-  fetchWeatherCity,
+  requestWeather,
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(WeatherScreen)

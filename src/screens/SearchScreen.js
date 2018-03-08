@@ -22,13 +22,13 @@ class SearchScreen extends Component {
   }
 
   serachOnChange = inputText => {
-    const { isBookmarks, setCities, fetchSearchCity } = this.props
+    const { isBookmarks, setCities, requestCities } = this.props
     const isEmpty = inputText.indexOf(' ') === 0 || inputText.length === 0
     isEmpty
       ? setCities(isBookmarks ? getBookmarks() : [])
       : isBookmarks
         ? setCities(localSearchCity(inputText))
-        : fetchSearchCity(inputText)
+        : requestCities(inputText)
   }
 
   render() {

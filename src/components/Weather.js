@@ -18,13 +18,13 @@ const City = styled.div`
 
 const Weather = ({ forecast, isFetching }) => (
   <WeatherContainer>
-    <Country>{isFetching ? 'Wait please...' : forecast.parent.title}</Country>
-    <City>{isFetching ? 'Wait please...' : forecast.title}</City>
+    <Country>{isFetching ? 'Wait please...' : forecast.country}</Country>
+    <City>{isFetching ? 'Wait please...' : forecast.city}</City>
     {isFetching ? (
       <p>Wait please...</p>
     ) : (
       <WeatherItem
-        paramWeather={forecast.consolidated_weather}
+        consolidatedWeather={forecast.consolidatedWeather}
         isFetching={isFetching}
       />
     )}

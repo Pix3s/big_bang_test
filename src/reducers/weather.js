@@ -3,7 +3,10 @@ import { combineReducers } from 'redux'
 import { handleAction, handleActions } from 'redux-actions'
 import { SET_WEATHER, REQUEST_WEATHER } from '../actions'
 
-const forecast = handleAction(SET_WEATHER, (_, { payload }) => payload, null)
+/**
+ * change keys in obj(applySpec)
+ */
+const forecast = handleAction(SET_WEATHER, (_, { payload }) => payload, null) 
 
 const isFetching = handleActions(
   {

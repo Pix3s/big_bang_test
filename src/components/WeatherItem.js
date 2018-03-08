@@ -38,12 +38,12 @@ const ContainerTable = styled.div`
   width: 100%;
 `
 
-const WeatherItem = ({ paramWeather, isFetching }) => (
+const WeatherItem = ({ consolidatedWeather, isFetching }) => (
   <ContainerTableWeather>
     <ContainerTable>
       {isFetching
         ? 'Wait please...'
-        : paramWeather.map(dayWeather => (
+        : consolidatedWeather.map(dayWeather => (
             <WeatherDay key={dayWeather.applicable_date}>
               <Day>{getDay(dayWeather.applicable_date)}</Day>
               <p>{new Date(dayWeather.applicable_date).toDateString()}</p>

@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import { setCities, fetchSearchCity } from '../actions'
+import { setCities, requestCities } from '../actions'
 import { SearchScreen } from '../screens'
 
 const mapStateToProps = state => ({
@@ -9,7 +9,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = {
   setCities,
-  fetchSearchCity,
+  requestCities,
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(SearchScreen)

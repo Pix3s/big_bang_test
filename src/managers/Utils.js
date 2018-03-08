@@ -1,3 +1,5 @@
+import * as R from 'ramda'
+
 export const img = {
   Snow: 'sn',
   Sleet: 'sn',
@@ -32,3 +34,9 @@ export const dayRus = [
 ]
 
 export const getDay = date => day[new Date(date).getDay()]
+
+export const mapForcast = R.applySpec({
+  country: R.pipe(R.prop('parent'), R.prop('title')),
+  city: R.prop('title'),
+  consolidatedWeather: R.prop('consolidated_weather'),
+})
