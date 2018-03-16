@@ -17,18 +17,14 @@ const Screen = styled.div`
 
 class SearchScreen extends Component {
   componentWillMount() {
-    const { isBookmarks, setCities } = this.props
-    setCities(isBookmarks ? getBookmarks() : [])
+    const { setCities } = this.props
+    setCities([])
   }
 
   serachOnChange = inputText => {
-    const { isBookmarks, setCities, requestCities } = this.props
+    const { setCities, requestCities } = this.props
     const isEmpty = inputText.indexOf(' ') === 0 || inputText.length === 0
-    isEmpty
-      ? setCities(isBookmarks ? getBookmarks() : [])
-      : isBookmarks
-        ? setCities(localSearchCity(inputText))
-        : requestCities(inputText)
+    isEmpty? setCities([]) : requestCities(inputText)
   }
 
   render() {

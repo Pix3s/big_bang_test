@@ -24,15 +24,15 @@ const CityItem = ({ isBookmarks, city, setCities }) => (
   <ContainerCity>
     <Title>{city.title}</Title>
     <button
-      disabled={!isBookmarks && isInBookmarks(city.woeid)}
-      onClick={() => {
-        if (isBookmarks) {
-          dellBookmarks(city.woeid)
-          setCities(getBookmarks())
-        } else {
-          addBookmarks(city.woeid, city.title)
-        }
-      }}
+      // disabled={!isBookmarks && isInBookmarks(city.woeid)}
+      // onClick={() => {
+        // if (isBookmarks) {
+        //   dellBookmarks(city.woeid)
+        //   setCities(getBookmarks())
+        // } else {
+        //   addBookmarks(city.woeid, city.title)
+        // }
+      // }}
     >
       {isBookmarks ? 'Убрать из числа избранных' : 'Сделать избранным'}
     </button>

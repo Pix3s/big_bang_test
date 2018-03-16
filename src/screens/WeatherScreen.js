@@ -6,8 +6,8 @@ const Screen = styled.div``
 
 class WeatherScreen extends Component {
   componentWillMount() {
-    const { requestWeather, match } = this.props
-    requestWeather(match.params.id)
+    const { requestWeather, match: { params: { id } } } = this.props
+    requestWeather(id)
   }
 
   render() {

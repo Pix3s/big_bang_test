@@ -1,10 +1,10 @@
 import { call, put, takeEvery, takeLatest } from 'redux-saga/effects'
 import { fetchSearchCity } from '../managers/requests'
-import { requestCities, setCities } from '../actions'
+import { REQUEST_CITIES, setCities } from '../actions'
 
-const citiesWorker = function*({ playload }) {
+const getCities = function*({ payload }) {
   try {
-    const cities = yield call(fetchSearchCity, playload)
+    const cities = yield call(fetchSearchCity, payload)
     yield put(setCities(cities))
   } catch (e) {
     console.log(e)
@@ -12,6 +12,6 @@ const citiesWorker = function*({ playload }) {
   }
 }
 
-export const gerCities = function*() {
-  yield takeLatest(requestCities, citiesWorker)
+export const watchCities = function*() {
+  yield takeEvery(REQUEST_CITIES, getCities)
 }
